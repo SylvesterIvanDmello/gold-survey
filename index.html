@@ -100,31 +100,35 @@
 
     <!-- JavaScript for Share Button -->
     <script>
-        function shareSurvey() {
-            const shareData = {
-                title: 'Survey on Financial Impact of Idle Gold Holdings in Indian Households',
-                text: 'Participate in this survey on the financial impact of idle gold holdings in Indian households. Your feedback matters!',
-                url: 'https://sylvesterivandmello.github.io/gold-survey/'
-            };
+    function shareSurvey() {
+        const shareData = {
+            title: 'Survey on Financial Impact of Idle Gold Holdings in Indian Households',
+            text: `Hello everyone, my name is Sylvester Ivan Dmello, and I'm a student at Wilson College, currently pursuing my bachelor's degree in BMS.
+I am conducting research on "The Study on Financial Impact of Idle Gold Holdings in Indian Households".
+It would really mean a lot if you could take some time to fill out this survey and support my research 🙏🏻.
 
-            if (navigator.share) {
-                navigator.share(shareData)
-                    .then(() => alert('Thanks for sharing! 😊'))
-                    .catch((err) => {
-                        console.error('Error sharing:', err.message);
-                        alert('Sharing failed: ' + err.message);
-                    });
-            } else {
-                // Fallback: Copy link to clipboard
-                navigator.clipboard.writeText(shareData.url)
-                    .then(() => {
-                        alert('Link copied to clipboard! Share it manually. 😊');
-                    })
-                    .catch(err => {
-                        alert('Unable to copy link: ' + err.message);
-                    });
-            }
+Thank you for putting in your time, effort, and support by taking part in my survey 😇.`,
+            url: 'https://sylvesterivandmello.github.io/gold-survey/' // For platforms that auto-detect URLs
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData)
+                .then(() => alert('Thanks for sharing! 😊'))
+                .catch((err) => {
+                    console.error('Error sharing:', err.message);
+                    alert('Sharing failed: ' + err.message);
+                });
+        } else {
+            // Fallback: Copy message and link to clipboard
+            navigator.clipboard.writeText(`${shareData.text}`)
+                .then(() => {
+                    alert('The survey details have been copied to the clipboard! You can manually share it. 😊');
+                })
+                .catch(err => {
+                    alert('Unable to copy text: ' + err.message);
+                });
         }
-    </script>
+    }
+</script>
 </body>
 </html>
